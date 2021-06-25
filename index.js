@@ -558,7 +558,7 @@ async function starts() {
 					reply(mess.only.mpa)
 					anu = await fetchJson(`https://st4rz.herokuapp.com/api/yta2?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*DESCARGA EXITOSA ✅*\n◉ *Título* : ${anu.title}\n\nDALE NEFASTO NO SPAMES TE ESTOY ENVIANDO EL AUDIO ESPERAME 😡`
+					teks = `*DESCARGA EXITOSA ✅*\n◉ *Título* : ${anu.title}\n\nNO ESPAMEE ESTOY ENVIANDO EL AUDIO!😡`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
@@ -671,7 +671,7 @@ async function starts() {
 						reply('')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `*「 Hatori 」*\n\n${body.slice(4)}`)
+							sendMess(_.jid, `*「Hatori」*\n\n${body.slice(4)}`)
 						}
 						reply('Transmisión exitosa')
 					}
@@ -693,6 +693,7 @@ async function starts() {
 						}
 						reply('Grupo de transmisión exitoso')
 					}
+					break
 					
                      case 'salir':
                     if (!isGroup) return reply(mess.only.group)
@@ -882,7 +883,7 @@ async function starts() {
 						fs.unlinkSync(media)
 						if (err) return reply('❌ No se pudo convertir el sticker en imágenes')
 						buffer = fs.readFileSync(ran)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: '*⌈ Imagen convertida ✅ ⌉*\n\nby shanduy'})
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: '*⌈ Imagen convertida ✅ ⌉*\n\nby ⚡HH-BOT⚡})
 						fs.unlinkSync(ran)
 					})
 					break
@@ -1024,7 +1025,7 @@ async function starts() {
                     fs.writeFileSync('./database/json/leveling.json', JSON.stringify(_leveling))
                      reply(mess.leveloff)
                 } else {
-                    reply(` *Digita el comando 1 para activar, 0 para desactivar *\n * Ejemplo: ${prefix}leveling 1*`)
+                    reply(` *Digita el comando 1 para activar, 0 para desactivar*\n *Ejemplo: ${prefix}leveling 1*`)
                 }
             break
                                 /*case 'nsfwtrap':
@@ -1149,7 +1150,7 @@ async function starts() {
 							reply('❌ *ERROR* ❌')
 						}
 						break
-					case 'nsfwfeets':
+					case 'nsfwpatas':
 						try {
 							if (!isNsfw) return reply('❌ *NSFW Desactivado* ❌')
 							res = await fetchJson(`https://meme-api.herokuapp.com/gimme/animefeets`, {method: 'get'})
@@ -1214,7 +1215,7 @@ async function starts() {
                   }
 
 		if (budy.includes(`bot gay`)) {
-                  reply(`Miren a este boludito`)
+                  reply(`Miren a este pelotudo`)
                   }
 
 		if (budy.includes(`gracias`)) {
@@ -1229,19 +1230,19 @@ async function starts() {
                   reply(`opaaaaa`)
                   }
                  
-		if (budy.includes(`hola`)) {
-                  reply(`hola, apeteces de sexo?`)
+		if (budy.includes(`*brynz`)) {
+                  reply(`que rico la chupa el brynz`)
                   }			
 					
 		if (budy.includes(`fua`)) {
                   reply(`este fierrote pa`)
                   }
-        if (budy.startsWith(`ssks`)) {
-        const none = fs.readFileSync('./anishan/anime5.mp3');
+        if (budy.startsWith(`rap1`)) {
+        const none = fs.readFileSync('./anishan/rap1.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`canta`)) {
-        const none = fs.readFileSync('./anishan/anime4.mp3');
+	if (budy.startsWith(`rap2`)) {
+        const none = fs.readFileSync('./anishan/rap2.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
 	if (budy.startsWith('gime')){
@@ -1249,8 +1250,8 @@ async function starts() {
         const none = fs.readFileSync('./anishan/anime3.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`*te amo`)) {
-        const none = fs.readFileSync('./anishan/anime2.mp3');
+	if (budy.startsWith(`rap3`)) {
+        const none = fs.readFileSync('./anishan/rap3.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
 	if (budy.startsWith(`onichan`)) {
@@ -1261,8 +1262,8 @@ async function starts() {
         const none = fs.readFileSync('./mp3/fernan.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`paraguayo`)) {
-        const none = fs.readFileSync('./mp3/gaspi11.mp3');
+	if (budy.startsWith(`rap4`)) {
+        const none = fs.readFileSync('./mp3/rap4.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
 	if (budy.startsWith(`venezolano`)) {
@@ -1379,7 +1380,7 @@ async function starts() {
 						console.log(muehe)
 						reply(muehe)
 					} else {
-						console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
+						console.log(color('[ERROR]','red'), 'Comando no registrado de:', color(sender.split('@')[0]))
 					}
                            }
 		} catch (e) {
