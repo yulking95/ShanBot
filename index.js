@@ -243,24 +243,65 @@ async function starts() {
         fs.writeFileSync('./Nazwa.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
 
 	client.on('group-participants-update', async (anu) => {
-		if (!welkom.includes(anu.jid)) return
-		try {
-			const mdata = await client.groupMetadata(anu.jid)
-			console.log(anu)
-			if (anu.action == 'add') {
-				num = anu.participants[0]
-				teks = `Hola mi estimad@ @${num.split('@')[0]}\nBienvenido a *${mdata.subject}* el mejor grupo \n\nUn gusto conocerte 😎\n\nOjito sigue las reglas del grupo si no, pa fuera prro, los admins te eliminan 🧐\n\nPara utilizar el bot registrate con el comando ${prefix}daftar y tu nombre\n\nPara ver los demas comandos utiliza ${prefix}help\n\nOjito con el spam 🧐\n\nby ⚡HH-BOT⚡`
-                          client.sendMessage(mdata.id, teks, MessageType.text, { contextInfo: {"mentionedJid": [num]}})
-			} else if (anu.action == 'remove') {
-				num = anu.participants[0]
-				teks = `NOOOO se nos fue un NEFASTO 😎 @${num.split('@')[0]}👋\n\nQue dios lo bendiga 😎`
-				client.sendMessage(mdata.id, teks, MessageType.text, {contextInfo: {"mentionedJid": [num]}})
-			}
-		} catch (e) {
-			console.log('Error : %s', color(e, 'red'))
-		}
-	})
+		
+if (!welkom.includes(anu.jid)) return
 
+		try {						
+			 mdata = await client.groupMetadata(anu.jid)
+
+			console.log(anu)
+
+			if (anu.action == 'add') {
+
+				num = anu.participants[0]
+
+				try {
+
+					ppimg = await client.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
+
+				} catch {
+
+					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+
+				}
+
+				teks = `Hola, mi estimad@ @${num.split('@')[0]}\nSea Bienvenid@ al grupo *${mdata.subject}*\n\nEspero que le agrade, lea las reglas y evite se baneado❤️`
+
+				let buff = await getBuffer(ppimg)
+
+				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+
+				client.sendMessage(from, tujuh, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+
+			} else if (anu.action == 'remove') {
+
+				num = anu.participants[0]
+
+				try {
+
+					ppimg = await client.getProfilePicture(`${num.split('@')[0]}@c.us`)
+
+				} catch {
+
+					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+
+				}
+
+				teks = `Nadie lo conocia@${num.split('@')[0]} xd`
+
+				let buff = await getBuffer(ppimg)
+
+				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+
+			}
+
+		} catch (e) {
+
+			console.log('Error : %s', color(e, 'red'))
+
+		}
+
+	})
 		client.on('CB:Blocklist', json => {
             if (blocked.length > 2) return
 	    for (let i of json[1].blocklist) {
