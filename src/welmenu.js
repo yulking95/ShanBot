@@ -4,15 +4,15 @@ const welmenu = (prefix, pushname) => {
 
 *PARA ACTIVAR LA BIENVENIDA*
 
-- ${prefix}welcome 1
+- ${prefix}bienvenida 1
 
 *PARA DESACTIVAR LA BIENVENIDA*
 
-- ${prefix}welcome 0
+- ${prefix}bienvenida 0
 
 _Para activar este comando el bot necesita tener admin_
 
-by shanduy
+by ⚡HH-BOT⚡
 `
 
 }
