@@ -4,21 +4,21 @@ const menuadmin = (prefix, pushname) => {
  
  ◪ *COMANDOS DE ADMIN*
  │
- ├─ ❏ ${prefix}opengc
- ├─ ❏ ${prefix}closegc
- ├─ ❏ ${prefix}promote
- ├─ ❏ ${prefix}demote
+ ├─ ❏ ${prefix}opengp
+ ├─ ❏ ${prefix}closegp
+ ├─ ❏ ${prefix}promover
+ ├─ ❏ ${prefix}rebajar
  ├─ ❏ ${prefix}tagall
  ├─ ❏ ${prefix}tagall2
  ├─ ❏ ${prefix}tagall3
  ├─ ❏ ${prefix}tagall4
  ├─ ❏ ${prefix}tagall5
  ├─ ❏ ${prefix}add
- ├─ ❏ ${prefix}kick
+ ├─ ❏ ${prefix}ban
  ├─ ❏ ${prefix}listadmins
  ├─ ❏ ${prefix}linkgroup
- ├─ ❏ ${prefix}leave
- ├─ ❏ ${prefix}welcome
+ ├─ ❏ ${prefix}salir
+ ├─ ❏ ${prefix}bienvenida
  ├─ ❏ ${prefix}nsfw
  ├─ ❏ ${prefix}leveling
  ├─ ❏ ${prefix}level
