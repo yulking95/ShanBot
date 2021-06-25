@@ -85,9 +85,9 @@ const { othermenu } require('./database/menu/othermenu')*/
 /******CARGA DE ENTRADA VCARD******/
 const vcard = 'BEGIN:VCARD\n' // Tarjeta de contacto
             + 'VERSION:3.0\n' 
-            + 'FN:Shan\n' // Nombre
-            + 'ORG:Shanduy;\n' // Propietario
-            + 'TEL;type=CELL;type=VOICE;waid=593967689722:+593 96 768 9722\n' // ID de WhatsApp + número de teléfono
+            + 'FN:Hatori\n' // Nombre
+            + 'ORG:HH-BOT\n' // Propietario
+            + 'TEL;type=CELL;type=VOICE;waid=51928564603:+51 928 564 603\n' // ID de WhatsApp + número de teléfono
             + 'END:VCARD'
 /******FIN DE ENTRADA VCARD******/
 
@@ -171,7 +171,7 @@ const getLevelingId = (userId) => {
         }
 
 function addMetadata(packname, author) {	
-	if (!packname) packname = 'ShanBot'; if (!author) author = 'shanduy';	
+	if (!packname) packname = 'HH'; if (!author) author = 'HH';	
 	author = author.replace(/[^a-zA-Z0-9]/g, '');	
 	let name = `${author}_${packname}`
 	if (fs.existsSync(`./${name}.exif`)) return `./${name}.exif`
@@ -249,7 +249,7 @@ async function starts() {
 			console.log(anu)
 			if (anu.action == 'add') {
 				num = anu.participants[0]
-				teks = `Mi loco @${num.split('@')[0]}\nTodo bien NEFASTO!!!! Bienvenido a *${mdata.subject}* el mejor grupo una locura 👉😎👈\n\nUn gusto conocerte hijo de la maraca 😀\n\nOjito sigue las reglas del grupo si no, pa fuera mi loco los admins te eliminan 🧐\n\nPara utilizar el bot registrate con el comando ${prefix}daftar y tu nombre\n\nPara ver los demas comandos utiliza ${prefix}help\n\nOjito con el spam 🧐\n\nby shanduy`
+				teks = `Hola mi estimad@ @${num.split('@')[0]}\nBienvenido a *${mdata.subject}* el mejor grupo \n\nUn gusto conocerte 😎\n\nOjito sigue las reglas del grupo si no, pa fuera prro, los admins te eliminan 🧐\n\nPara utilizar el bot registrate con el comando ${prefix}daftar y tu nombre\n\nPara ver los demas comandos utiliza ${prefix}help\n\nOjito con el spam 🧐\n\nby ⚡HH-BOT⚡`
                           client.sendMessage(mdata.id, teks, MessageType.text, { contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
 				num = anu.participants[0]
@@ -281,8 +281,8 @@ async function starts() {
 			const from = mek.key.remoteJid
 			const type = Object.keys(mek.message)[0]
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
-			const time = moment.tz('America/Guayaquil').format('HH:mm:ss')
-			const date = moment.tz('America/Guayaquil').format('DD/MM/YY')
+			const time = moment.tz('America/Bogota').format('HH:mm:ss')
+			const date = moment.tz('America/Bogota').format('DD/MM/YY')
 			body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
 			budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
@@ -291,37 +291,37 @@ async function starts() {
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
-				wait: 'Calmao pa estoy procesando😎\n\n❗Por favor no hacer spam👏❗\n\nby shanduy',
+				wait: 'Espere.. estoy procesando🕜\n\n❗Por favor no hacer spam👏❗',
 				success: '✔️ Listo ✔️',
                                 levelon: '❬ ✅ ❭ *Level activado*',
 				leveloff: ' ❬ ✅ ❭  *Level desactivado*',
 				levelnoton: '❬ ❎ ❭ *Level no esta activado*',
 				levelnol: '*Nivel* 0 ',
 				error: {
-					stick: '[❎] Falló, se produjo un error al convertir la imagen en una pegatina',
+					stick: '[❎] Falló, se produjo un error al convertir la imagen en un sticker',
 					Iv: '❌ Link inválido ❌'
 				},
 				only: {
 					group: '[❗] Este comando es solo para grupos!',
 					ownerG: '[❗] Este comando solo puede ser utilizado por un admin del grupo!',
-					ownerB: '[❗] Este comando solo lo usa ShanBot!',
+					ownerB: '[❗] Este comando solo lo usa ⚡HH-BOT⚡!',
 					admin: '[❗] Este comando solo puede ser utilizado por administradores del grupo!',
 					Badmin: '[❗] Este comando solo se puede usar cuando el bot se convierte en administrador!',
-                                        pegatina: 'Calma crack estoy haciendo tu sticker 👏\n\n*Recuerda los stickersgif son de 6 segundos ❗*\n\nby shanduy',
-					attp: 'Calma crack estoy haciendo tu texto a sticker 👏\n\n*Esto puede demorar unos minutos*\n\nby shanduy',
-					imgs: 'Euu flaco 🥴\n\n*Convirtiendo tu Sticker a Imagen 🔄*\n\nby shanduy',
-					mpcancion: 'Calmaoooo estoy procesando 😎\n\n*Convirtiendo de MP4 a MP3 🔄*\n\nby shanduy',
-					mpa: 'Euu flaco 🥴\n\n*Estoy decargando tu cancion 🔄*\n\nAguarde un momento, por favor\n\nby shanduy',
-                                        mpv: 'Calmao pa 😎\n\n*Estoy descargando tu video 🔄*\n\nAguarde un momento, por favor\n\nby shanduy',
-					insta: 'Calmao 😎\n\n*Estoy descargando tu post 🔄*\n\nAguarde un momento, por favor\n\nby shanduy',
-					musica: 'Calmao pa estoy bucando tu canción 😎\n\n*Recuerda colocar bien el nombre de la cancion o el link del video de youtube ❗*\n\nby shanduy',
-					daftarB: `「NEFASTOOOOO」\n\nPERO PAAAAAAAAAA!\n\nNo estas registrado en mi base de datos 😳 \n\nComando : ${prefix}daftar Nombre\nEjemplo : ${prefix}daftar shanduy`,
+                                        pegatina: 'Espera, estoy haciendo tu sticker 👏\n\n*Recuerda los stickersgif son de 6 segundos ❗*\n\nby HH-BOT',
+					attp: 'Espera, estoy haciendo tu texto a sticker 👏\n\n*Esto puede demorar unos minutos*\n\nby HH-BOT',
+					imgs: '*Convirtiendo tu Sticker a Imagen 🔄*\n\nby HH-BOT',
+					mpcancion: 'Calmaoooo estoy procesando 😎\n\n*Convirtiendo de MP4 a MP3 🔄*\n\nby HH-BOT',
+					mpa: '*Estoy decargando tu cancion 🔄*\n\nAguarde un momento, por favor\n\nby shanduy',
+                                        mpv: '*Estoy descargando tu video 🔄*\n\nAguarde un momento, por favor\n\nby shanduy',
+					insta: '*Estoy descargando tu post 🔄*\n\nAguarde un momento, por favor\n\nby shanduy',
+					musica: 'Espera pa estoy bucando tu canción 😎\n\n*Recuerda colocar bien el nombre de la cancion o el link del video de youtube ❗*\n\NO ESPAMEE CSM',
+					daftarB: `「👁️」\n\nNo Registrado❎!\n\nNo estas registrado en mi base de datos 😳 \n\nComando : ${prefix}daftar Nombre\nEjemplo : ${prefix}daftar ⚡HH-BOT⚡`,
 				}
 			}
     			const apakah = ['Si','No']
                         const kapankah = ['Otro día','Otra semana','Otro mes','Otro año']
 			const botNumber = client.user.jid
-			const ownerNumber = ["593997889284@s.whatsapp.net"] // replace this with your number
+			const ownerNumber = ["51928564603@s.whatsapp.net"] // replace this with your number
 			const nomorOwner = [ownerNumber]
 	                const isGroup = from.endsWith('@g.us')
 			const totalchat = await client.chats.all()
@@ -339,7 +339,7 @@ async function starts() {
 			const isOwner = ownerNumber.includes(sender)
                         const isUser = user.includes(sender)
                         const isLevelingOn = isGroup ? _leveling.includes(groupId) : false
-                        const NomerOwner = '593997889284@s.whatsapp.net'
+                        const NomerOwner = '51928564603@s.whatsapp.net'
                         /******Entrada ApiKey******/
                         const BarBarKey = 'Mn2Bf58QHQ8kABoLq80g'
                         /******Fin de la entrada de ApiKey******/
@@ -388,7 +388,7 @@ async function starts() {
  
        /******ENTRADA FIN DE FUNCIONES******/
 			function addMetadata(packname, author) {	
-				if (!packname) packname = 'ShanBot'; if (!author) author = 'Shanduy';	
+				if (!packname) packname = 'HH'; if (!author) author = 'Hatori';	
 				author = author.replace(/[^a-zA-Z0-9]/g, '');	
 				let name = `${author}_${packname}`
 				if (fs.existsSync(`./src/stickers/${name}.exif`)) return `./src/stickers/${name}.exif`
@@ -432,13 +432,13 @@ async function starts() {
 		case 'menu':
 		client.sendMessage(from, help(prefix), text)
 		break
-                case 'otak':
+                case 'otaku':
 		client.sendMessage(from, otak(prefix, sender), text, {quoted: mek})
 		break
 		case 'idioma':
 		client.sendMessage(from, bahasa(prefix, sender), text, {quoted: mek})
 		break
-		case 'shanmenu':
+		case 'hhmenu':
 		client.sendMessage(from, toinmenu(prefix, sender), text, {quoted: mek})
 		break
 		case 'menuadmin':
@@ -450,14 +450,14 @@ async function starts() {
 		case 'desmenu':
 		client.sendMessage(from, desmenu(prefix, sender), text, {quoted: mek})
 		break
-		case 'versión':
+		 /*'versión':
 		case 'version':
 		client.sendMessage(from, version(prefix, sender), text, {quoted: mek})
-		break
+		break*/
                 case 'welmenu':
 		client.sendMessage(from, welmenu(prefix, sender), text, {quoted: mek})
 		break
-		case 'shantera':
+		case 'botero':
 		client.sendMessage(from, shantera(prefix, sender), text, {quoted: mek})
 		break
 					
@@ -465,7 +465,7 @@ async function starts() {
 	       case 'troleo':
                client.sendMessage(from, virtex(prefix, sender), text, {quoted: mek})
                break*/
-                            case 'demote':
+                            case 'rebajar':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -484,7 +484,7 @@ async function starts() {
 						client.groupDemoteAdmin(from, mentioned)
 					}
 					break
-                 case 'promote':
+                 case 'promover':
 					client.updatePresence(from, Presence.composing) 
                                         if (!isUser) return reply(mess.only.daftarB)
 					if (!isGroup) return reply(mess.only.group)
@@ -504,11 +504,11 @@ async function starts() {
 						client.groupMakeAdmin(from, mentioned)
 					}
 					break
-	      case 'gay':
+	      /*case 'gay':
                 client.updatePresence(from, Presence.composing) 
               if (!isUser) return reply(mess.only.daftarB)
                 random = gay[Math.floor(Math.random() * (gay.length))]
-	      break
+	      break*/
 				  case 'wa.me':
 				  case 'wame':
   client.updatePresence(from, Presence.composing) 
@@ -529,9 +529,9 @@ async function starts() {
 	case 'creador':
 	    case 'owner':
                 case 'creator':
-                client.sendMessage(from, {displayname: "Shan", vcard: vcard}, MessageType.contact, { quoted: mek})
-		client.sendMessage(from, 'Arriba está el número del creador del bot <ShanBot>\n\nNO SOY UN BOT LPM 🥸\n\nAhi puedes resolver tus preguntas y errores :)\n\nEste no es el numero del propietario del bot que estas usando, si no del creador de la base de datos del bot❗\n\nby shanduy',MessageType.text, { quoted: mek} )
-                const none = fs.readFileSync('./mp3/shan.mp3');
+                client.sendMessage(from, {displayname: "Hatori", vcard: vcard}, MessageType.contact, { quoted: mek})
+		client.sendMessage(from, 'Arriba está el número del creador del bot\n\nNO SOY UN BOT LPM 🥸\n\nAhi puedes resolver tus preguntas y errores :)\n\nEste no es el numero del propietario del bot que estas usando, si no del creador de la base de datos del bot❗\n\nby HH-BOT',MessageType.text, { quoted: mek} )
+                const none = fs.readFileSync('./mp3/shans.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                 break
 	case 'hidetag':
@@ -570,7 +570,7 @@ async function starts() {
 					reply(mess.only.mpv)
 					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*DESCARGA EXITOSA ✅*\n◉ *Título* : ${anu.title}\n\n*EL VIDEO SE ESTÁ ENVIANDO, NO SPAM PEDAZO DE DOWN*`
+					teks = `*DESCARGA EXITOSA ✅*\n◉ *Título* : ${anu.title}\n\n*EL VIDEO SE ESTÁ ENVIANDO, NO SPAMEE 😠*`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
@@ -595,7 +595,7 @@ async function starts() {
 					dtt = body.slice(8)
 					ranm = getRandom('.mp3')
 					rano = getRandom('.ogg')
-					dtt.length > 600
+					dtt.length > 999
 					? reply('Texto muy largo weon')
 					: gtts.save(ranm, dtt, function() {
 						exec(`ffmpeg -i ${ranm} -ar 48000 -vn -c:a libopus ${rano}`, (err) => {
@@ -607,12 +607,12 @@ async function starts() {
 						})
 					})
 					break
-                                case 'listadmins':
+                                case 'admins':
 				case 'adminlist':
 					client.updatePresence(from, Presence.composing) 
                                         if (!isUser) return reply(mess.only.daftarB)
 					if (!isGroup) return reply(mess.only.group)
-					teks = `Lista De Nefastos Del Grupo*${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
+					teks = `Lista De Admins Del Grupo*${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
 					no = 0
 					for (let admon of groupAdmins) {
 						no += 1
@@ -640,7 +640,7 @@ async function starts() {
 						teks += `╠➥ @${mem.jid.split('@')[0]}\n`
 						members_id.push(mem.jid)
 					}
-					mentions('╔══✪〘 MENCIONANDO 〙✪══\n╠➥'+teks+'╚═〘 by shanduy 〙', members_id, true)
+					mentions('╔══✪〘 MENCIONANDO 〙✪══\n╠➥'+teks+'╚═〘 by ⚡HH-BOT⚡ 〙', members_id, true)
 					break
                                 case 'send':
 					var pc = body.slice(6)
@@ -671,12 +671,12 @@ async function starts() {
 						reply('')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `*「 Shanduy 」*\n\n${body.slice(4)}`)
+							sendMess(_.jid, `*「 Hatori 」*\n\n${body.slice(4)}`)
 						}
 						reply('Transmisión exitosa')
 					}
 					break
-					case 'bcgc':
+					case 'bcgp':
 					client.updatePresence(from, Presence.composing) 
 					if (!isOwner) return reply(mess.only.ownerB)
 					if (args.length < 1) return reply('.......')
@@ -694,7 +694,7 @@ async function starts() {
 						reply('Grupo de transmisión exitoso')
 					}
 					
-                     case 'leave':
+                     case 'salir':
                     if (!isGroup) return reply(mess.only.group)
                     if (!isGroupAdmins) return reply(mess.only.admin)
                      setTimeout( () => {
@@ -702,7 +702,7 @@ async function starts() {
 					}, 2000)
                      setTimeout( () => {
 					client.updatePresence(from, Presence.composing) 
-					client.sendMessage(from, 'Chao Pa👋', text) // ur cods
+					client.sendMessage(from, 'Chao muchachos👋', text) // ur cods
 					}, 0)
                      break
        /*case 'ownergrup':
@@ -714,7 +714,7 @@ async function starts() {
            }
            client.sendMessage(from, options, text, { quoted: mek } )
 				break*/
-                                      case 'kick':
+                                      case 'ban':
 					case 'pafuera':
 					client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
@@ -723,7 +723,7 @@ async function starts() {
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Marca al que vamos a funar')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
-						teks = 'Pedido recibido, chao nefastooo 👋 :\n'
+						teks = 'Pedido recibido, chao prro👋 :\n'
 						for (let _ of mentioned) {
 							teks += `@${_.split('@')[0]}\n`
 						}
@@ -732,7 +732,7 @@ async function starts() {
 					} else {
 						mentions(`Pedido recibido, chao pa 👋 : @${mentioned[0].split('@')[0]}`, mentioned, true)
 						client.groupRemove(from, mentioned)
-					client.sendMessage(mentioned, 'Chao puta gorda', text)
+					client.sendMessage(mentioned, 'Chao prro 🤙', text)
 					}
 					break
 				case 'exe':
@@ -748,7 +748,7 @@ async function starts() {
                   break
                  case 'linkgroup':
 				case 'linkgrup':
-				case 'linkgc':
+				case 'linkgp':
 				    client.updatePresence(from, Presence.composing) 
 				    if (!isGroup) return reply(mess.only.group)
                                      if (!isUser) return reply(mess.only.daftarB)
@@ -762,7 +762,7 @@ async function starts() {
 				client.sendMessage(from, buff, image, {quoted: mek})
 				break
 		          		
-			case 'closegc':
+			case 'closegp':
 					client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -775,7 +775,7 @@ async function starts() {
 					client.groupSettingChange (from, GroupSettingChange.messageSend, true);
 					reply(close)
 					break
-                case 'opengc':
+                case 'opengp':
                 case 'bukagc':
 					client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
@@ -790,7 +790,7 @@ async function starts() {
 					break
 				                case 'attp':
 						if (!isUser) return reply(mess.only.daftarB)
-					        if (args.length < 1) return reply(`¿Dónde está el texto?\n*Ejemplo:* ${prefix}attp shanduy`)
+					        if (args.length < 1) return reply(`¿Dónde está el texto?\n*Ejemplo:* ${prefix}attp bot`)
 						reply(mess.only.attp)
 					        attp2 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
 						client.sendMessage(from, attp2, MessageType.sticker, {quoted: mek})
@@ -798,7 +798,7 @@ async function starts() {
 				case 's':
 				case 'tucson':
 				case 'cuties':
-				case 'nefasto':
+				
 				case 'stiker':
 				case 'sticker':
 				case 'stickergif':
@@ -909,7 +909,7 @@ async function starts() {
                 play = body.slice(5)
                 anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=shanduy25`)
                if (anu.error) return reply(anu.error)
-                 infomp3 = `*⌈ Canción Encontrada ✅ ⌉*\n◉ *Título* : ${anu.result.title}\nFuente : ${anu.result.source}\nTamaño : ${anu.result.size}\n\n*ESPERE ENVIANDO ARCHIVO, NO SPAMES LA CONCHA DE TU MADRE*`
+                 infomp3 = `*⌈ Canción Encontrada ✅ ⌉*\n◉ *Título* : ${anu.result.title}\nFuente : ${anu.result.source}\nTamaño : ${anu.result.size}\n\n*ESPERE ENVIANDO ARCHIVO, NO SPAMES 😠*`
                 buffer = await getBuffer(anu.result.thumbnail)
                 lagu = await getBuffer(anu.result.url_audio)
                 client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
@@ -918,19 +918,19 @@ async function starts() {
                                 case 'daftar':
 					client.updatePresence(from, Presence.composing)
 					if (isUser) return reply('Ya estas registrado 🧐')
-					if (args.length < 1) return reply(`Incorrecto \nComando : ${prefix}daftar Nombre\nComando : ${prefix}daftar shanduy`)
+					if (args.length < 1) return reply(`Incorrecto \nComando : ${prefix}daftar Nombre\nComando : ${prefix}daftar HH`)
 					var reg = body.slice(8)
 					var nombre = reg.split("|")[0];
                                                 user.push(sender)
 						fs.writeFileSync('./database/json/user.json', JSON.stringify(user))
 						client.sendMessage(from, `\`\`\`REGISTRADO ✅\`\`\`\n\n\`\`\`DNI: Tucsardo 🥸\`\`\`\n\n\`\`\`Hora EC: ${time}\`\`\`\n\n\`\`\`Fecha: ${date}\`\`\`\n\n\`\`\`[Usuario]: ${nombre}\`\`\`\n\`\`\`[Número]: wa.me/${sender.split("@")[0]}\`\`\`\n\`\`\`Para usar el bot\`\`\`\n\`\`\`Por favor\`\`\`\n\`\`\`enviar ${prefix}help\`\`\`\n\`\`\`\nTotal de usuários ${user.length}\`\`\``, text, {quoted: mek})
 					break
-                                case 'welcome':
+                                case 'bienvenida':
 					if (!isGroup) return reply(mess.only.group)
                                         if (!isUser) return reply(mess.only.daftarB)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isGroupAdmins) return reply(mess.only.Badmin)
-					if (args.length < 1) return reply('Para activar está funcion coloca *welcome 1')
+					if (args.length < 1) return reply('Para activar está funcion coloca *bienvenida 1')
 					if (Number(args[0]) === 1) {
 						if (isWelkom) return reply('Ya esta activada!!!')
 						welkom.push(from)
@@ -941,12 +941,12 @@ async function starts() {
 						fs.writeFileSync('./database/json/welkom.json', JSON.stringify(welkom))
 						reply('❬ ✅ ❭ La funcion de bienvenida esta deshabilitada en este grupo')
 					} else {
-						reply('Escribe el comando 1 para activarlo y 0 para desactivarlo Ejemplo: *welcome 1')
+						reply('Escribe el comando 1 para activarlo y 0 para desactivarlo Ejemplo: *bienvenida 1')
 					}
 					break
                                case 'nsfwneko':
 				    try{
-						if (!isNsfw) return reply('❌ *NSFW NO ESTA ATIVADO* ❌')
+						if (!isNsfw) return reply('❌ *NSFW NO ESTA ACTIVADO* ❌')
                                                 if (!isUser) return reply(mess.only.daftarB)
 						res = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwneko?apikey=BotWeA`, {method: 'get'})
 						buffer = await getBuffer(res.result)
@@ -989,8 +989,8 @@ async function starts() {
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					break						
-                             case 'delete':
-					case 'del':
+                             case 'del':
+					case 'd':
 					if (!isGroup)return reply(mess.only.group)
                                         if (!isUser) return reply(mess.only.daftarB)
 		                        client.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
@@ -1061,7 +1061,7 @@ async function starts() {
 							reply('❌ *ERROR* ❌')
 						}
 						break*/
-					case 'nsfwbobs': 
+					case 'nsfwtetas': 
 						try {
 							if (!isNsfw) return reply('❌ *NSFW Desactivado* ❌')
 							res = await fetchJson(`https://meme-api.herokuapp.com/gimme/biganimetiddies`, {method: 'get'})
@@ -1188,10 +1188,10 @@ async function starts() {
                                         const latensi = speed() - timestamp
                                         client.updatePresence(from, Presence.composing) 
 				        uptime = process.uptime()
-                                        client.sendMessage(from, `Velocidad: *${latensi.toFixed(4)} _Second_*\nDevice: *Alcatel Pixi 4*\nRAM: *6Mb*\nData: *10GB*\nJaringan: *2G*\nStatus: *Bateria Baja*`, text, { quoted: mek})
+                                        client.sendMessage(from, `Velocidad: *${latensi.toFixed(4)} _Second_*\nDevice: *Xiami redmi pro*\nRAM: *8gb*\nData: *10GB*\nJaringan: *2G*\nStatus: *Bateria Baja*`, text, { quoted: mek})
                                         break
                                 case 'ttp':
-					if (args.length < 1) return reply('Y el texto flaco?')
+					if (args.length < 1) return reply('Y el texto?')
 					ranp = getRandom('.png')
 					rano = getRandom('.webp')
 					teks = body.slice(4).trim()
@@ -1222,7 +1222,7 @@ async function starts() {
                   }
 
 		if (budy.includes(`Bien gracias y tu?`)) {
-                  reply(`Todo bien yazmi, te quiero :3`)
+                  reply(`Todo bien, te quiero :3`)
                   }
 					
 		if (budy.includes(`opa`)) {
@@ -1234,21 +1234,22 @@ async function starts() {
                   }			
 					
 		if (budy.includes(`fua`)) {
-                  reply(`el diegote pa`)
+                  reply(`este fierrote pa`)
                   }
-        if (budy.startsWith(`la toca 7w7`)) {
+        if (budy.startsWith(`ssks`)) {
         const none = fs.readFileSync('./anishan/anime5.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`quien es tu sempai botsito`)) {
+	if (budy.startsWith(`canta`)) {
         const none = fs.readFileSync('./anishan/anime4.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`me gimes 7u7`)) {
+	if (budy.startsWith('gime')){
+	 
         const none = fs.readFileSync('./anishan/anime3.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`te amo botsito uwu`)) {
+	if (budy.startsWith(`*te amo`)) {
         const none = fs.readFileSync('./anishan/anime2.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
@@ -1256,7 +1257,7 @@ async function starts() {
         const none = fs.readFileSync('./anishan/anime1.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`pasen sexo`)) {
+	if (budy.startsWith(`sexo`)) {
         const none = fs.readFileSync('./mp3/fernan.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
@@ -1268,43 +1269,43 @@ async function starts() {
         const none = fs.readFileSync('./mp3/gaspi10.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`gaspi corte`)) {
+	if (budy.startsWith(`lgkgk`)) {
         const none = fs.readFileSync('./mp3/gaspi12.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`gaspi buenos dias`)) {
+	if (budy.startsWith(`odldkdk`)) {
         const none = fs.readFileSync('./mp3/gaspi13.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`enano`)) {
+	if (budy.startsWith(`sskkkjdj`)) {
         const none = fs.readFileSync('./mp3/gaspi14.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`buenas noches`)) {
+	if (budy.startsWith(`ssxzs`)) {
         const none = fs.readFileSync('./mp3/gaspi15.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`ya me voy a dormir`)) {
+	if (budy.startsWith(`kkks`)) {
         const none = fs.readFileSync('./mp3/sombare12.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-        if (budy.startsWith(`calefon`)) {
+        if (budy.startsWith(`cassdd`)) {
         const none = fs.readFileSync('./mp3/sombare11.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`bot de mierda`)) {
+	if (budy.startsWith(`bot de miedffa`)) {
         const none = fs.readFileSync('./mp3/sombare10.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`apurate bot`)) {
+	if (budy.startsWith(`apurated bot`)) {
         const none = fs.readFileSync('./mp3/sombare9.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`un chino`)) {
+	if (budy.startsWith(`un chdfino`)) {
         const none = fs.readFileSync('./mp3/sombare7.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }				
-        if (budy.startsWith(`no funciona`)) {
+        if (budy.startsWith(`no funciosshna`)) {
         const none = fs.readFileSync('./mp3/sombare8.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
@@ -1312,23 +1313,23 @@ async function starts() {
         const none = fs.readFileSync('./mp3/gaspi3.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`corte`)) {
+	if (budy.startsWith(`corssdte`)) {
         const none = fs.readFileSync('./mp3/gaspi2.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`gaspi me saludas`)) {
+	if (budy.startsWith(`gasdddudas`)) {
         const none = fs.readFileSync('./mp3/gaspi4.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`gaspi y las minitas`)) {
+	if (budy.startsWith(`gaspddffs minitas`)) {
         const none = fs.readFileSync('./mp3/gaspi6.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`gaspi todo bien`)) {
+	if (budy.startsWith(`gaspfi tofffdo bien`)) {
         const none = fs.readFileSync('./mp3/gaspi7.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`me quiero suicidar`)) {
+	if (budy.startsWith(`me quiefsuicidar`)) {
         const none = fs.readFileSync('./mp3/gaspi81.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
@@ -1336,11 +1337,11 @@ async function starts() {
         const none = fs.readFileSync('./mp3/gaspi9.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`contate algo bot`)) {
+	if (budy.startsWith(`contdate ddfalgo bot`)) {
         const none = fs.readFileSync('./mp3/gaspi5.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-               if (budy.startsWith(`sexo`)) { 
+               if (budy.startsWith(`ssdfexo`)) { 
         const none = fs.readFileSync('./mp3/sexo.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
@@ -1348,27 +1349,27 @@ async function starts() {
         const none = fs.readFileSync('./mp3/sombare1.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-		if (budy.startsWith(`el bot del orto no funciona`)) {
+		if (budy.startsWith(`el bot del ortoe no funciona`)) {
         const none = fs.readFileSync('./mp3/sombare2.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-		if (budy.startsWith(`epicardo`)) {
+		if (budy.startsWith(`epicdeeardo`)) {
         const none = fs.readFileSync('./mp3/sombare3.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-		if (budy.startsWith(`insta de la minita`)) {
+		if (budy.startsWith(`insta de laddfwsd minita`)) {
         const none = fs.readFileSync('./mp3/sombare4.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-                 if (budy.startsWith(`una mierda de bot`)) {
+                 if (budy.startsWith(`una mierdfda de bot`)) {
         const none = fs.readFileSync('./mp3/sombare5.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-		 if (budy.startsWith(`ultimo momento`)) {
+		 if (budy.startsWith(`ultimo momenddrto`)) {
         const none = fs.readFileSync('./mp3/sombare6.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }			
-		if (budy.startsWith(`nefasto`)) {
+		if (budy.startsWith(`nefadfsto`)) {
         const none = fs.readFileSync('./mp3/gaspi1.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
