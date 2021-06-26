@@ -556,6 +556,14 @@ if (!welkom.includes(anu.jid)) return
 		
 
 	
+case 'plantilla'
+	
+case 'plant1'
+               if (!isGroupAdmins) return reply(mess.only.admin)
+
+               client.sendMessage(from, destraba(prefix, sender), text, {quoted: mek})
+
+               break
 
 	
 
