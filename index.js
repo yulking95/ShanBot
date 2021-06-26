@@ -50,8 +50,8 @@ const welkom = JSON.parse(fs.readFileSync('./database/json/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./database/json/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./database/json/simi.json'))
 const user = JSON.parse(fs.readFileSync('./database/json/user.json'))
-const _leveling = JSON.parse(fs.readFileSync('./database/json/leveling.json'))
-const _level = JSON.parse(fs.readFileSync('./database/json/level.json'))
+const leveling = JSON.parse(fs.readFileSync('./database/json/leveling.json'))
+const level = JSON.parse(fs.readFileSync('./database/json/level.json'))
 /******FIN DE ENTRADA JSON******/
 
 /******INICIO DE LA ENTRADA DEL MENÚ******/
@@ -96,7 +96,7 @@ prefix = '*'
 blocked = []
 
 /******CONFIGURACION DE CARGA******/
-const _leveling = JSON.parse(fs.readFileSync('./database/group/leveling.json'))
+const leveling = JSON.parse(fs.readFileSync('./database/group/leveling.json'))
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
 const settingan = JSON.parse(fs.readFileSync('./admin/set.json'))
 const {
