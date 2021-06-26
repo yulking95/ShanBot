@@ -24,6 +24,7 @@ const { color, bgcolor } = require('./lib/color')
 const { bahasa } = require('./src/bahasa')
 const { negara } = require('./src/kodenegara')
 const { virtex } = require('./src/virtex')
+const { destraba } = require('./src/destraba')
 const { wait, pegatinas, musica, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
@@ -95,6 +96,8 @@ prefix = '*'
 blocked = []
 
 /******CONFIGURACION DE CARGA******/
+const _leveling = JSON.parse(fs.readFileSync('./database/group/leveling.json'))
+const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
 const settingan = JSON.parse(fs.readFileSync('./admin/set.json'))
 const {
 	author,
@@ -348,14 +351,14 @@ if (!welkom.includes(anu.jid)) return
 					ownerB: '[❗] Este comando solo lo usa ⚡HH-BOT⚡!',
 					admin: '[❗] Este comando solo puede ser utilizado por administradores del grupo!',
 					Badmin: '[❗] Este comando solo se puede usar cuando el bot se convierte en administrador!',
-                                        pegatina: 'Espera, estoy haciendo tu sticker 👏\n\n*Recuerda los stickersgif son de 6 segundos ❗*\n\nby HH-BOT',
-					attp: 'Espera, estoy haciendo tu texto a sticker 👏\n\n*Esto puede demorar unos minutos*\n\nby HH-BOT',
-					imgs: '*Convirtiendo tu Sticker a Imagen 🔄*\n\nby HH-BOT',
-					mpcancion: 'Calmaoooo estoy procesando 😎\n\n*Convirtiendo de MP4 a MP3 🔄*\n\nby HH-BOT',
-					mpa: '*Estoy decargando tu cancion 🔄*\n\nAguarde un momento, por favor\n\nby shanduy',
-                                        mpv: '*Estoy descargando tu video 🔄*\n\nAguarde un momento, por favor\n\nby shanduy',
-					insta: '*Estoy descargando tu post 🔄*\n\nAguarde un momento, por favor\n\nby shanduy',
-					musica: 'Espera pa estoy bucando tu canción 😎\n\n*Recuerda colocar bien el nombre de la cancion o el link del video de youtube ❗*\n\NO ESPAMEE CSM',
+                                        pegatina: 'Espera, estoy haciendo tu sticker 👏\n\n*Recuerda los stickersgif son de 6 segundos ❗*\n\n,
+					attp: 'Espera, estoy haciendo tu texto a sticker 👏\n\n*Esto puede demorar unos minutos*\n\n',
+					imgs: '*Convirtiendo tu Sticker a Imagen 🔄*\n\n',
+					mpcancion: 'Calmaoooo estoy procesando 😎\n\n*Convirtiendo de MP4 a MP3 🔄*\n\n',
+					mpa: '*Estoy decargando tu cancion 🔄*\n\nAguarde un momento, por favor\n\n',
+                                        mpv: '*Estoy descargando tu video 🔄*\n\nAguarde un momento, por favor\n\n',
+					insta: '*Estoy descargando tu post 🔄*\n\nAguarde un momento, por favor\n\n',
+					musica: 'Espera pa estoy bucando tu canción 😎\n\n*Recuerda colocar bien el nombre de la cancion o el link del video de youtube ❗*\n\*NO ESPAMEE CSM!!*',
 					daftarB: `「👁️」\n\nNo Registrado❎!\n\nNo estas registrado en mi base de datos 😳 \n\nComando : ${prefix}daftar Nombre\nEjemplo : ${prefix}daftar ⚡HH-BOT⚡`,
 				}
 			}
@@ -379,6 +382,7 @@ if (!welkom.includes(anu.jid)) return
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
                         const isUser = user.includes(sender)
+			const isAntiLink = isGroup ? antilink.includes(from) : false
                         const isLevelingOn = isGroup ? _leveling.includes(groupId) : false
                         const NomerOwner = '51928564603@s.whatsapp.net'
                         /******Entrada ApiKey******/
@@ -400,21 +404,37 @@ if (!welkom.includes(anu.jid)) return
 
 	        //FUNCION DE LEVEL
             if (isGroup && isLevelingOn) {
+
             const currentLevel = getLevelingLevel(sender)
+
             const checkId = getLevelingId(sender)
+
             try {
+
                 if (currentLevel === undefined && checkId === undefined) addLevelingId(sender)
+
                 const amountXp = Math.floor(Math.random() * 10) + 500
-                const requiredXp = 5000 * (Math.pow(2, currentLevel) - 1)
+
+                const requiredXp = 10000 * (Math.pow(2, currentLevel) - 1)
+
                 const getLevel = getLevelingLevel(sender)
+
                 addLevelingXp(sender, amountXp)
+
                 if (requiredXp <= getLevelingXp(sender)) {
+
                     addLevelingLevel(sender, 1)
-                    await reply(`*「 LEVEL UP 」*\n\n➸ *Nombre*: ${sender}\n➸ *XP*: ${getLevelingXp(sender)}\n➸ *Level*: ${getLevel} -> ${getLevelingLevel(sender)}\n\nFelicidades weon!! 🎉🎉`)
+
+                    await reply(`*「 LEVEL UP 」*\n\n➸ *Nombre*: ${sender}\n➸ *XP*: ${getLevelingXp(sender)}\n➸ *Level*: ${getLevel} -> ${getLevelingLevel(sender)}\n\nFelicidades!!  🎉🎉`)
+
                 }
+
             } catch (err) {
+
                 console.error(err)
+
             }
+
         }
 
 			colors = ['red','white','black','blue','yellow','green']
@@ -501,11 +521,27 @@ if (!welkom.includes(anu.jid)) return
 		case 'botero':
 		client.sendMessage(from, shantera(prefix, sender), text, {quoted: mek})
 		break
-					
-		/*case 'virtex':
-	       case 'troleo':
+		
+
+	
+
+	
+
+               case 'destraba':
+
+	       case 'dest':
+
+               client.sendMessage(from, destraba(prefix, sender), text, {quoted: mek})
+
+               break
+
+
+
+			
+		case 'vortex':
+	       case 'spamll':
                client.sendMessage(from, virtex(prefix, sender), text, {quoted: mek})
-               break*/
+               break
                             case 'rebajar':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -605,18 +641,47 @@ if (!welkom.includes(anu.jid)) return
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
 					break
-				case 'ytmp4':
-					if (args.length < 1) return reply('Donde esta la URL?')
+				
+
+	
+
+	
+                                  case 'ytmp4':
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
-					reply(mess.only.mpv)
+
 					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
+
 					if (anu.error) return reply(anu.error)
-					teks = `*DESCARGA EXITOSA ✅*\n◉ *Título* : ${anu.title}\n\n*EL VIDEO SE ESTÁ ENVIANDO, NO SPAMEE 😠*`
+
+					teks = `*Titulo* : ${anu.title}`
+
 					thumb = await getBuffer(anu.thumb)
+
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
+
 					buffer = await getBuffer(anu.result)
+
 					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek})
+
 					break
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
 			       case 'ig':
 					if (args.length < 1) return reply('Donde esta la URL del video de insta?')
 					if(!isUrl(args[0]) && !args[0].includes('instagram')) return reply(mess.error.Iv)
@@ -1137,6 +1202,7 @@ if (!welkom.includes(anu.jid)) return
 						}
 						break
 					/*case 'nsfwyuri':
+					
 						try {
 							if (!isNsfw) return reply('❌ *NSFW Desactivado* ❌')
 							res = await fetchJson(`https://api.computerfreaker.cf/v1/yuri`, {method: 'get'})
@@ -1147,6 +1213,57 @@ if (!welkom.includes(anu.jid)) return
 							reply('❌ *ERROR* ❌')
 						}
 					break*/
+                                         case 'dado':    
+
+					if (!isGroupAdmins) return reply('Usted no es un admin del grupo!' ,text, { quoted: mek })
+
+					
+
+					kapankah = body.slice(1)
+
+					const elu =['1','2','3','4','5','6']
+
+					const ule = elu[Math.floor(Math.random() * elu.length)]
+
+					client.sendMessage(from, ule, text, { quoted: mek })
+
+					break
+                                         case 'leens':
+
+					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+
+						const media = await client.downloadAndSaveMediaMessage(encmedia)
+
+						reply(mess.wait)
+
+						await recognize(media, {lang: 'eng+es', oem: 1, psm: 3})
+
+							.then(teks => {
+
+								reply(teks.trim())
+
+								fs.unlinkSync(media)
+
+							})
+
+							.catch(err => {
+
+								reply(err.message)
+
+								fs.unlinkSync(media)
+
+							})
+
+					} else {
+
+						reply('Solo una foto tío')
+
+					}
+
+					break
+
 				case 'nsfwass':
 						try {
 							if (!isNsfw) return reply('❌ *NSFW Desactivado* ❌')
@@ -1214,7 +1331,8 @@ if (!welkom.includes(anu.jid)) return
 						}
 						break
 						case 'nsfwtoin':
-						try {
+						
+case{
 							if (!isNsfw) return reply('❌ *NSFW Desactivado* ❌')
 							res = await fetchJson(`https://tobz-api.herokuapp.com/nsfwtrap?apikey=BotWeA`, {method: 'get'})
 							buffer = await getBuffer(res.url)
@@ -1252,7 +1370,7 @@ if (!welkom.includes(anu.jid)) return
                   }
 
 		if (budy.includes(`buenos dias`)) {
-                  reply(`Buenos Dias trolos de mierda`)
+                  reply(`Buenos Dias bb`)
                   }
 
 		if (budy.includes(`bot gay`)) {
@@ -1260,7 +1378,7 @@ if (!welkom.includes(anu.jid)) return
                   }
 
 		if (budy.includes(`gracias`)) {
-                  reply(`De nada padre`)
+                  reply(`De nada bb`)
                   }
 
 		if (budy.includes(`Bien gracias y tu?`)) {
