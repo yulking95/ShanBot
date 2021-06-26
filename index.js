@@ -436,8 +436,8 @@ if (!welkom.includes(anu.jid)) return
             }
 
         }
-	        if (budy.includes("://chat.whatsapp.com/")){		i
-		(!isGroup) return
+	        if (budy.includes("://chat.whatsapp.com/")){		
+		if (!isGroup) return
 
 		if (!isAntiLink) return
 
