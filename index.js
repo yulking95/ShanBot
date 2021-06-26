@@ -1308,7 +1308,11 @@ if (!welkom.includes(anu.jid)) return
 					break*/
                                          case 'dado':    
 
-					if (!isGroupAdmins) return reply('Usted no es un admin del grupo!' ,text, { quoted: mek })
+					if (isGroupAdmins) return reply('Buena suerte!' ,text, { quoted: mek })
+
+
+									
+									
 
 					
 
