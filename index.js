@@ -989,7 +989,7 @@ if (!welkom.includes(anu.jid)) return
 						fs.unlinkSync(media)
 						if (err) return reply('❌ No se pudo convertir el sticker en imágenes')
 						buffer = fs.readFileSync(ran)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: '*⌈ Imagen convertida ✅ ⌉*\n\nby ⚡HH-BOT⚡})
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: '*⌈ Imagen convertida ✅ ⌉*\n\nby ⚡HH-BOT⚡'})
 						fs.unlinkSync(ran)
 					})
 					break
