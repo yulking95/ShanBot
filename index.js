@@ -1209,7 +1209,7 @@ case 'plant1'
                     ppUrl = await client.getProfilePicture(from) // leave empty to get your own
 
 			        buffer = await getBuffer(ppUrl)		           
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: `*NOMBRE* : ${groupName}\n*MIEMBROS* : ${groupMembers.length}\n*ADMINS* : ${groupAdmins.length}\n*DESCRIPCIÓN* : ${groupDesc}`})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: `*NOMBRE* : ${groupName}\n*MIEMBROS* : ${groupMembers.length}\n*DESCRIPCIÓN* : ${groupDesc}`})
 
                     break
 	
@@ -1303,28 +1303,14 @@ case 'plant1'
 							reply('❌ *ERROR* ❌')
 						}
 						break
-					/*case 'nsfwyuri':
-					
-						try {
-							if (!isNsfw) return reply('❌ *NSFW Desactivado* ❌')
-							res = await fetchJson(`https://api.computerfreaker.cf/v1/yuri`, {method: 'get'})
-							buffer = await getBuffer(res.result)
-							client.sendMessage(from, buffer, image, {quoted: mek, caption: 'NEFASTOOOOOOO'})
-						} catch (e) {
-							console.log(`Error :`, color(e,'red'))
-							reply('❌ *ERROR* ❌')
-						}
-					break*/
-                                         case 'dado':    
-
-					if (isGroupAdmins) return reply('Buena suerte!' ,text, { quoted: mek })
-
-
-									
-									
-
 					
 
+	
+
+					
+                                       case 'dado':    
+
+					if (!isGroupAdmins) return reply('Usted no es un admin de grupo!' ,text, { quoted: mek })					
 					kapankah = body.slice(1)
 
 					const elu =['1','2','3','4','5','6']
