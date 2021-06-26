@@ -1332,7 +1332,7 @@ if (!welkom.includes(anu.jid)) return
 						break
 						case 'nsfwtoin':
 						
-case{
+                                                 try {
 							if (!isNsfw) return reply('❌ *NSFW Desactivado* ❌')
 							res = await fetchJson(`https://tobz-api.herokuapp.com/nsfwtrap?apikey=BotWeA`, {method: 'get'})
 							buffer = await getBuffer(res.url)
