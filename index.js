@@ -23,6 +23,7 @@ const {
 const { color, bgcolor } = require('./lib/color')
 const { bahasa } = require('./src/bahasa')
 const { negara } = require('./src/kodenegara')
+const { plantilla1 } = requiere ('./src/plantilla1')
 const { virtex } = require('./src/virtex')
 const { destraba } = require('./src/destraba')
 const { wait, pegatinas, musica, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
@@ -268,7 +269,7 @@ if (!welkom.includes(anu.jid)) return
 
 				}
 
-				teks = `Hola, mi estimad@ @${num.split('@')[0]}\nSea Bienvenid@ al grupo *${mdata.subject}*\n\nEspero que le agrade, lea las reglas y evite se baneado❤️`
+				teks = `Hola, mi estimad@ @${num.split('@')[0]}\nSea Bienvenid@ al grupo *${mdata.subject}*\n\nEspero que le agrade, lea las reglas y evite se baneado❤️\n*DESCRIPCIÓN* : ${groupDesc}`
 
 				let buff = await getBuffer(ppimg)
 
@@ -561,7 +562,7 @@ if (!welkom.includes(anu.jid)) return
                case 'destraba':
 
 	       case 'dest':
-
+               if (!isGroupAdmins) return reply(mess.only.admin)
                client.sendMessage(from, destraba(prefix, sender), text, {quoted: mek})
 
                break
@@ -789,7 +790,7 @@ if (!welkom.includes(anu.jid)) return
 					client.updatePresence(from, Presence.composing) 
                                         if (!isUser) return reply(mess.only.daftarB)
 					if (!isGroup) return reply(mess.only.group)
-					teks = `Lista De Admins Del Grupo*${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
+					teks = `Lista De Admins Del Grupo *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
 					no = 0
 					for (let admon of groupAdmins) {
 						no += 1
