@@ -561,7 +561,7 @@ case 'plantilla'
 case 'plant1'
                if (!isGroupAdmins) return reply(mess.only.admin)
 
-               client.sendMessage(from, destraba(prefix, sender), text, {quoted: mek})
+               client.sendMessage(from, plantilla1(prefix, sender), text, {quoted: mek})
 
                break
 
