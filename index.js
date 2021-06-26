@@ -96,7 +96,7 @@ prefix = '*'
 blocked = []
 
 /******CONFIGURACION DE CARGA******/
-const _leveling = JSON.parse(fs.readFileSync('./database/group/leveling.json'))
+const _leveling = JSON.parse(fs.readFileSync('./database/json/leveling.json'))
 const antilink = JSON.parse(fs.readFileSync('./database/json/antilink.json'))
 const settingan = JSON.parse(fs.readFileSync('./admin/set.json'))
 const {
