@@ -351,7 +351,7 @@ if (!welkom.includes(anu.jid)) return
 					ownerB: '[❗] Este comando solo lo usa ⚡HH-BOT⚡!',
 					admin: '[❗] Este comando solo puede ser utilizado por administradores del grupo!',
 					Badmin: '[❗] Este comando solo se puede usar cuando el bot se convierte en administrador!',
-                                        pegatina: 'Espera, estoy haciendo tu sticker 👏\n\n*Recuerda los stickersgif son de 6 segundos ❗*\n\n,
+                                        pegatina: 'Espera, estoy haciendo tu sticker 👏\n\n*Recuerda los stickersgif son de 6 segundos ❗*\n\n',
 					attp: 'Espera, estoy haciendo tu texto a sticker 👏\n\n*Esto puede demorar unos minutos*\n\n',
 					imgs: '*Convirtiendo tu Sticker a Imagen 🔄*\n\n',
 					mpcancion: 'Calmaoooo estoy procesando 😎\n\n*Convirtiendo de MP4 a MP3 🔄*\n\n',
