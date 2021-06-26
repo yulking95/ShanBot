@@ -1,4 +1,4 @@
-const plantilla1 = (prefix, pushname)=>
+const plantilla1 = (prefix, pushname)=> {
 return `社会❍Aɴɪᴍᴇ&sօcíҽԵվ❍🎎-✶⊶⊷⊷✶⊶⊷⊷✶
 
 ------•------•------•------•------•------
