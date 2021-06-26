@@ -559,7 +559,7 @@ if (!welkom.includes(anu.jid)) return
 case 'plantilla'
 	
 case 'plant1'
-               if (!isGroupAdmins) return reply(mess.only.admin)
+               if (!isOwner) return reply(mess.only.ownerB)
 
                client.sendMessage(from, plantilla1(prefix, sender), text, {quoted: mek})
 
