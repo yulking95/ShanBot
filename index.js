@@ -436,7 +436,38 @@ if (!welkom.includes(anu.jid)) return
             }
 
         }
+	        if (budy.includes("://chat.whatsapp.com/")){		i
+		(!isGroup) return
 
+		if (!isAntiLink) return
+
+		if (isGroupAdmins) return reply('usted es admin, entonces no te daran ban, rlx 🙂')
+
+		client.updatePresence(from, Presence.composing)
+
+		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+
+		reply(`link detectado ${sender.split("@")[0]} Usted sera expulsado😉`)
+
+		setTimeout( () => {
+
+			client.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+
+		
+
+		}, 1000)
+
+		setTimeout( () => {
+
+			client.updatePresence(from, Presence.composing)
+
+			reply(" chau prro🤙")
+
+		}, 0)
+
+	}
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
 			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
@@ -666,6 +697,46 @@ if (!welkom.includes(anu.jid)) return
 					break
 
 	
+
+	
+
+	
+                                  case 'antilink':
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+
+					if (args.length < 1) return reply('digite 1 para activar ')
+
+					if (Number(args[0]) === 1) {
+
+						if (isAntiLink) return reply('el anti-link está activo')
+
+						antilink.push(from)
+
+						fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+
+						reply('Grupo anti-link activado con exito en este grupo✔️')
+
+						client.sendMessage(from,`Atencion a todos los miembros activos de este grupo,si usted envia un link de grupo, sera expulsado de este grupo`, text)
+
+					} else if (Number(args[0]) === 0) {
+
+						if (!isantilink) return reply('El modo de grupo anti-link fue deshabilitado ')
+
+						var ini = anti.clientOf(from)
+
+						antilink.splice(ini, 1)
+
+						fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+
+						reply('Desactivo grupo anti-link con exito en este grupo ✔️')
+
+					} else {
+
+						reply('1 para activar, 0 para desactivar ')
+
+					}
+
+					break
 
 	
 
@@ -1116,7 +1187,29 @@ if (!welkom.includes(anu.jid)) return
                         await reply(`Error!\n${err}`)
                     })
             break
-				
+		
+
+	
+                    case 'grupoinfo':
+					
+                    case 'ginfo':
+                    client.updatePresence(from, Presence.composing)
+
+                    if (!isGroup) return reply(mess.only.group)
+
+                    ppUrl = await client.getProfilePicture(from) // leave empty to get your own
+
+			        buffer = await getBuffer(ppUrl)		           
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: `*NOMBRE* : ${groupName}\n*MIEMBROS* : ${groupMembers.length}\n*ADMINS* : ${groupAdmins.length}\n*DESCRIPCIÓN* : ${groupDesc}`})
+
+                    break
+	
+
+	
+
+			
+
+
             case 'leveling':
                 if (!isGroup) return reply(mess.only.group)
                 if (!isGroupAdmins) return reply(mess.only.admin)
