@@ -1,4 +1,4 @@
-const virtex = (prefix, pushname) => {
+const destraba = (prefix, pushname) => {
 
 	return `Enviando destrabas 🦉
 ⏰DESTRAV2.0⏰
