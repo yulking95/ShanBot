@@ -1462,14 +1462,14 @@ case 'plant1':
                   }
 
 		if (budy.includes(`buenos dias`)) {
-                  reply(`Buenos Dias bb`)
+                  reply(`Buenos Dias 😎`)
                   }
 
 		if (budy.includes(`bot gay`)) {
                   reply(`Miren a este pelotudo`)
                   }
 
-		if (budy.includes(`racias bot`)) {
+		if (budy.includes(`Gracias bot`)) {
                   reply(`De nada bb`)
                   }
 
@@ -1485,8 +1485,8 @@ case 'plant1':
                   reply(`que rico la chupa el brynz`)
                   }			
 					
-		if (budy.includes(``)) {
-                  reply(`este fierrote pa`)
+		if (budy.includes(`*yue`)) {
+                  reply(`joder que buenas patas tiene la yue`)
                   }
         if (budy.startsWith(`rap1`)) {
         const none = fs.readFileSync('./anishan/rap1.mp3');
