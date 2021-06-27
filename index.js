@@ -556,9 +556,9 @@ if (!welkom.includes(anu.jid)) return
 		
 
 	
-case 'plantilla'
+case 'plantilla':
 	
-case 'plant1'
+case 'plant1':
                if (!isOwner) return reply(mess.only.ownerB)
 
                client.sendMessage(from, plantilla1(prefix, sender), text, {quoted: mek})
