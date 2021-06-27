@@ -1469,7 +1469,7 @@ case 'plant1':
                   reply(`Miren a este pelotudo`)
                   }
 
-		if (budy.includes(`gracias`)) {
+		if (budy.includes(`racias bot`)) {
                   reply(`De nada bb`)
                   }
 
@@ -1477,15 +1477,15 @@ case 'plant1':
                   reply(`Todo bien, te quiero :3`)
                   }
 					
-		if (budy.includes(`opa`)) {
-                  reply(`opaaaaa`)
+		if (budy.includes(`*andy`)) {
+                  reply(`que rico culito tiene el Andy🔥💫`)
                   }
                  
 		if (budy.includes(`*brynz`)) {
                   reply(`que rico la chupa el brynz`)
                   }			
 					
-		if (budy.includes(`fua`)) {
+		if (budy.includes(``)) {
                   reply(`este fierrote pa`)
                   }
         if (budy.startsWith(`rap1`)) {
@@ -1545,8 +1545,8 @@ case 'plant1':
         const none = fs.readFileSync('./mp3/sombare11.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
-	if (budy.startsWith(`bot de miedffa`)) {
-        const none = fs.readFileSync('./mp3/sombare10.mp3');
+	if (budy.startsWith(`Pasen porno`)) {
+        const none = fs.readFileSync('./mp3/callacagada.mp3');
 		client.sendMessage(from, none, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
                   }
 	if (budy.startsWith(`apurated bot`)) {
