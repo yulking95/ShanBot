@@ -23,7 +23,7 @@ const {
 const { color, bgcolor } = require('./lib/color')
 const { bahasa } = require('./src/bahasa')
 const { negara } = require('./src/kodenegara')
-const { plantilla1 } = requiere ('./src/plantilla1')
+const { plantilla1 } = require('./src/plantilla1')
 const { virtex } = require('./src/virtex')
 const { destraba } = require('./src/destraba')
 const { wait, pegatinas, musica, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
