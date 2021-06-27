@@ -269,7 +269,7 @@ if (!welkom.includes(anu.jid)) return
 
 				}
 
-				teks = `Hola, mi estimad@ @${num.split('@')[0]}\nSea Bienvenid@ al grupo *${mdata.subject}*\n\nEspero que le agrade, lea las reglas y evite se baneado❤️\n*DESCRIPCIÓN* : ${groupDesc}`
+				teks = `Hola, mi estimad@ @${num.split('@')[0]}\nSea Bienvenid@ al grupo *${mdata.subject}*\n\nEspero que le agrade, lea las reglas y evite se baneado❤️\n*DESCRIPCIÓN* : ${mdata.desc}`
 
 				let buff = await getBuffer(ppimg)
 
