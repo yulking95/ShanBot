@@ -18,7 +18,8 @@ const help = (prefix) => {
 Monas chinas
 - ${prefix}botero
 Interactua con el bot
-
+- ${prefix}destraba 
+Envía destrabas en caso de spam
 ◉ *NUEVOS MENUS*
 - ${prefix}desmenu
 Descargar musica y videos de YT
