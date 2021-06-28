@@ -526,7 +526,7 @@ if (!welkom.includes(anu.jid)) return
 		case 'menu':
                 uptime = process.uptime ()
                 putagg = await getBuffer(`https://i.ibb.co/JmDv7Dr/Anime.jpg`)
-		client.sendMessage(from, help(prefix, pushname), text, {quoted: mek})
+		client.sendMessage(from, help(prefix, pushname, sender), text, {quoted: mek})
 		break
                 case 'otaku':
 		client.sendMessage(from, otak(prefix, sender), text, {quoted: mek})
@@ -795,7 +795,7 @@ if (!welkom.includes(anu.jid)) return
 
 					reply(teks.trim())
 
-					await limitAdd(sender) 
+					 
 
 					break 
 	
@@ -816,7 +816,7 @@ if (!welkom.includes(anu.jid)) return
 
 					client.sendMessage(from, pok, image, { quoted: mek, caption: `*PINTEREST*\n\*Resultado de la búsqueda* : *${tels}*`})
 
-                                        await limitAdd(sender)
+                                      
 						break 
 					
 	
@@ -840,7 +840,7 @@ if (!welkom.includes(anu.jid)) return
 					if (anu.error) return reply(anu.error)
 					teks = `*DESCARGA EXITOSA ✅*`
 					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek})
+					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, text, {quoted: mek})
 					break
                                  case 'tts':
 				   client.updatePresence(from, Presence.recording) 
