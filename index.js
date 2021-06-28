@@ -682,9 +682,9 @@ if (!welkom.includes(anu.jid)) return
 					if (args.length < 1) return reply('Donde esta la URL?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					reply(mess.only.mpa)
-					anu = await fetchJson(`https://st4rz.herokuapp.com/api/yta2?url=${args[0]}`, {method: 'get'})
+					anu = await fetchJson(`https://api.zeks.xyz/api/ytmp3?apikey=riywC4KC9yjS9SFCF4CO2PLKuMX&url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*DESCARGA EXITOSA ✅*\n◉ *Título* : ${anu.title}\n\nNO ESPAMEE ESTOY ENVIANDO EL AUDIO!😡`
+					teks = `*DESCARGA EXITOSA ✅*\n◉ *Título* : ${anu.title}\n\nESPERA ESTOY ENVIANDO EL AUDIO!😡`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
@@ -697,8 +697,8 @@ if (!welkom.includes(anu.jid)) return
 	
                                   case 'ytmp4':
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
-
-					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
+                                        if (!isGroupAdmins) return reply(mess.only.admin)
+					anu = await fetchJson(`https://api.zeks.xyz/api/ytmp4?apikey=riywC4KC9yjS9SFCF4CO2PLKuMX&url=${args[0]}`, {method: 'get'})
 
 					if (anu.error) return reply(anu.error)
 
@@ -718,10 +718,31 @@ if (!welkom.includes(anu.jid)) return
 
 	
 
+					 /*case 'yt2mp4':
+					
+					 
+					= await fetchJson(`https://api.zeks.xyz/api/ytplaymp4/2?apikey=riywC4KC9yjS9SFCF4CO2PLKuMX&q=jatuh%20jadi%20resah=${args[0]}`, {method: 'get'})
+
+					if (anu.error) return reply(anu.error)
+
+					teks = `*Titulo* : ${anu.title}`
+
+					thumb = await getBuffer(anu.thumb)
+
+					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
+
+					buffer = await getBuffer(anu.result)
+
+					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek})
+
+					break*/
+
+	
+
 	
                                   case 'antilink':
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-
+                                        if (!isGroupAdmins) return reply(mess.only.admin)
 					if (args.length < 1) return reply('digite 1 para activar ')
 
 					if (Number(args[0]) === 1) {
@@ -755,7 +776,28 @@ if (!welkom.includes(anu.jid)) return
 					}
 
 					break
+                                   case 'ytsearch':
+                                        if (!isGroupAdmins) return reply(mess.only.admin)
+					if (args.length < 1) return reply('Falta el texto tio?')					
+					(mess.wait)
 
+					anu = await fetchJson(`https://api.zeks.xyz/api/yts?apikey=riywC4KC9yjS9SFCF4CO2PLKuMX&q=${body.slice(10)}`, {method: 'get'})
+
+					if (anu.error) return reply(anu.error)
+
+					teks = '=================\n'
+
+					for (let i of anu.result) {
+
+						teks += `\`\`\`Título\`\`\` : *${i.title}*\n\`\`\`Link\`\`\` : *https://youtu.be/${i.id}*\n\`\`\`Publicado\`\`\` : *${i.uploadDate}*\n\`\`\`Duracion\`\`\` : *${i.duration}*\n\`\`\`Visualizadores: \`\`\`*${h2k(i.viewCount)}*\n\`\`\`Canal:\`\`\` *${i.channel.name}*\n=================\n`
+
+					}
+
+					reply(teks.trim())
+
+					await limitAdd(sender) 
+
+					break 
 	
 
 	
