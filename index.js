@@ -361,7 +361,7 @@ if (!welkom.includes(anu.jid)) return
                                         mpv: '*Estoy descargando tu video 🔄*\n\nAguarde un momento, por favor\n\n',
 					insta: '*Estoy descargando tu post 🔄*\n\nAguarde un momento, por favor\n\n',
 					musica: 'Espera pa estoy bucando tu canción 😎\n\n*Recuerda colocar bien el nombre de la cancion o el link del video de youtube ❗*\n\*NO ESPAMEE CSM!!*',
-					daftarB: `「👁️」\n\nNo Registrado❎!\n\nNo estas registrado en mi base de datos 😳 \n\nComando : ${prefix}daftar Nombre\nEjemplo : ${prefix}daftar ⚡HH-BOT⚡`,
+					/*daftarB: `「👁️」 \n\nNo Registrado❎!\n\nNo estas registrado en mi base de datos 😳 \n\nComando : ${prefix}daftar Nombre\nEjemplo : ${prefix}daftar ⚡HH-BOT⚡`,*/
 				}
 			}
     			const apakah = ['Si','No']
@@ -662,7 +662,7 @@ if (!welkom.includes(anu.jid)) return
                 break
 	case 'hidetag':
                 client.updatePresence(from, Presence.composing) 
-                if (!isUser) return reply(mess.only.daftarB)
+                /*if (!isUser) return reply(mess.only.daftarB)*/
                 if (!isGroup) return reply(mess.only.group)
                 teks = body.slice(9)
                 group = await client.groupMetadata(from);
@@ -784,7 +784,7 @@ if (!welkom.includes(anu.jid)) return
                                  case 'tts':
 				   client.updatePresence(from, Presence.recording) 
 				   if (args.length < 1) return client.sendMessage(from, 'Cual es el código de idioma?\n\nPara saber el codigo de idioma coloque el comando ${prefix}idioma', text, {quoted: mek})
-                                   if (!isUser) return reply(mess.only.daftarB)
+                                   /*if (!isUser) return reply(mess.only.daftarB)*/
 					const gtts = require('./lib/gtts')(args[0])
 					if (args.length < 2) return client.sendMessage(from, 'Y el texto?', text, {quoted: mek})
 					dtt = body.slice(8)
@@ -826,7 +826,7 @@ if (!welkom.includes(anu.jid)) return
 			case 'tagall':
 				client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
-                                        if (!isUser) return reply(mess.only.daftarB)
+                                        /*if (!isUser) return reply(mess.only.daftarB)*/
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
@@ -947,7 +947,7 @@ if (!welkom.includes(anu.jid)) return
 				case 'linkgp':
 				    client.updatePresence(from, Presence.composing) 
 				    if (!isGroup) return reply(mess.only.group)
-                                     if (!isUser) return reply(mess.only.daftarB)
+                                     /*if (!isUser) return reply(mess.only.daftarB)*/
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 					linkgc = await client.groupInviteCode (from)
 					yeh = `Aqui esta el link del grupo 🤑\n\nhttps://chat.whatsapp.com/${linkgc}\n\nLink Del Grupo *${groupName}*`
@@ -985,7 +985,7 @@ if (!welkom.includes(anu.jid)) return
 					client.sendMessage(from, open, text, {quoted: mek})
 					break
 				                case 'attp':
-						if (!isUser) return reply(mess.only.daftarB)
+						 /* if (!isUser) return reply(mess.only.daftarB)*/
 					        if (args.length < 1) return reply(`¿Dónde está el texto?\n*Ejemplo:* ${prefix}attp bot`)
 						reply(mess.only.attp)
 					        attp2 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
@@ -999,7 +999,7 @@ if (!welkom.includes(anu.jid)) return
 				case 'sticker':
 				case 'stickergif':
 				case 'stikergif':
-			        if (!isUser) return reply(mess.only.daftarB)
+			        /*if (!isUser) return reply(mess.only.daftarB)*/
 				if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -1068,7 +1068,7 @@ if (!welkom.includes(anu.jid)) return
 					break
 			            case 'toimg':
 				    client.updatePresence(from, Presence.composing)
-                                    if (!isUser) return reply(mess.only.daftarB)
+                                    /*if (!isUser) return reply(mess.only.daftarB)*/
 					if (!isQuotedSticker) return reply('❌ Solo stickers')
 					reply(mess.only.imgs)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
@@ -1084,7 +1084,7 @@ if (!welkom.includes(anu.jid)) return
 					break
                         case 'tomp3':
                 	client.updatePresence(from, Presence.composing) 
-                        if (!isUser) return reply(mess.only.daftarB)
+                        /*if (!isUser) return reply(mess.only.daftarB)*/
 					if (!isQuotedVideo) return reply('❌ Solo videos')
 					reply(mess.only.mpcancion)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
@@ -1100,8 +1100,10 @@ if (!welkom.includes(anu.jid)) return
 					break
                 case 'play':   
 	        if (args.length < 1) return reply('Donde esta el nombre de la canción?')
-		if (!isUser) return reply(mess.only.daftarB)
-                reply(mess.only.musica)
+		 /*if (!isUser) return reply(mess.only.daftarB)*/
+               
+		if (!isGroup) return reply(mess.only.group)
+		reply(mess.only.musica)
                 play = body.slice(5)
                 anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=shanduy25`)
                if (anu.error) return reply(anu.error)
@@ -1123,7 +1125,7 @@ if (!welkom.includes(anu.jid)) return
 					break
                                 case 'bienvenida':
 					if (!isGroup) return reply(mess.only.group)
-                                        if (!isUser) return reply(mess.only.daftarB)
+                                        /*if (!isUser) return reply(mess.only.daftarB)*/
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isGroupAdmins) return reply(mess.only.Badmin)
 					if (args.length < 1) return reply('Para activar está funcion coloca *bienvenida 1')
@@ -1172,7 +1174,7 @@ if (!welkom.includes(anu.jid)) return
 				case 'waifu':
 					gatauda = body.slice(7)
 					reply(mess.wait)
-                                        if (!isUser) return reply(mess.only.daftarB)
+                                        /*if (!isUser) return reply(mess.only.daftarB)*/
 					anu = await fetchJson(`https://arugaz.my.id/api/nekonime`, {method: 'get'})
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, image,{quoted: mek})
@@ -1180,7 +1182,7 @@ if (!welkom.includes(anu.jid)) return
 				case 'randomanime':
 					gatauda = body.slice(13)
 					reply(mess.wait)
-                                        if (!isUser) return reply(mess.only.daftarB)
+                                        /*if (!isUser) return reply(mess.only.daftarB)*/
 					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomanime?apikey=BotWeA`, {method: 'get'})
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, image, {quoted: mek})
@@ -1188,7 +1190,7 @@ if (!welkom.includes(anu.jid)) return
                              case 'del':
 					case 'd':
 					if (!isGroup)return reply(mess.only.group)
-                                        if (!isUser) return reply(mess.only.daftarB)
+                                        /*if (!isUser) return reply(mess.only.daftarB)*/
 		                        client.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
 					break
                  case 'level':
