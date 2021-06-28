@@ -779,7 +779,7 @@ if (!welkom.includes(anu.jid)) return
                                    case 'ytsearch':
                                         if (!isGroupAdmins) return reply(mess.only.admin)
 					if (args.length < 1) return reply('Falta el texto tio?')					
-					(mess.wait)
+					reply(mess.wait)
 
 					anu = await fetchJson(`https://api.zeks.xyz/api/yts?apikey=riywC4KC9yjS9SFCF4CO2PLKuMX&q=${body.slice(10)}`, {method: 'get'})
 
@@ -799,7 +799,23 @@ if (!welkom.includes(anu.jid)) return
 
 					break 
 	
+                   case 'pinterest':
 
+                    tels = body.slice(11)
+
+					client.updatePresence(from, Presence.composing) 					data = await fetchJson(`https://api.zeks.xyz/api/pinimg?apikey=riywC4KC9yjS9SFCF4CO2PLKuMX&q=${tels}`, {method: 'get'})
+
+					reply(mess.wait)
+
+					n = JSON.parse(JSON.stringify(data));
+
+					nimek =  n[Math.floor(Math.random() * n.length)];
+
+					pok = await getBuffer(nimek)
+
+					client.sendMessage(from, pok, image, { quoted: mek, caption: `*PINTEREST*\n\*Resultado de la búsqueda* : *${tels}*`})
+
+                    await limitAdd(sender)
 	
 
 	
@@ -817,7 +833,7 @@ if (!welkom.includes(anu.jid)) return
 					if (args.length < 1) return reply('Donde esta la URL del video de insta?')
 					if(!isUrl(args[0]) && !args[0].includes('instagram')) return reply(mess.error.Iv)
 					reply(mess.only.insta)
-					anu = await fetchJson(`https://api.xteam.xyz/dl/ig?url=${args[0]}&APIKEY=APIKEYMU`, {method: 'get'})
+					anu = await fetchJson(`https://api.zeks.xyz/api/ig?apikey=riywC4KC9yjS9SFCF4CO2PLKuMX&url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = `*DESCARGA EXITOSA ✅*`
 					buffer = await getBuffer(anu.result)
