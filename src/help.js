@@ -1,16 +1,18 @@
 const help = (prefix) => {
 	return `
 
-⌜ *⚡HH-BOT⚡ 🤖 by Hatori* ⌟  
-
-◉ *INFORMACION*
+    ⌜ *⚡HH-BOT⚡* ⌟  
+*todo lo que necesita* 
+      ${pushname}
+◉    *INFORMACION*
    ○ Comando: ⌜ ${prefix} ⌟
    ○ Creador: Hatori™ 
    ○ Como usar el bot?
    
-
-
-
+Fecha y hora: 
+${time}  
+Velocidad:
+${process.uptime()}
 
 
 ◉ *NUEVO COMANDO*
