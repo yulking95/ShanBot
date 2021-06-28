@@ -803,7 +803,8 @@ if (!welkom.includes(anu.jid)) return
 
                     tels = body.slice(11)
 
-					client.updatePresence(from, Presence.composing) 					data = await fetchJson(`https://api.zeks.xyz/api/pinimg?apikey=riywC4KC9yjS9SFCF4CO2PLKuMX&q=${tels}`, {method: 'get'})
+					client.updatePresence(from, Presence.composing) 		
+					 data = await fetchJson(`https://api.zeks.xyz/api/pinimg?apikey=riywC4KC9yjS9SFCF4CO2PLKuMX&q=${tels}`, {method: 'get'})
 
 					reply(mess.wait)
 
@@ -815,7 +816,9 @@ if (!welkom.includes(anu.jid)) return
 
 					client.sendMessage(from, pok, image, { quoted: mek, caption: `*PINTEREST*\n\*Resultado de la búsqueda* : *${tels}*`})
 
-                    await limitAdd(sender)
+                                        await limitAdd(sender
+						break 
+					
 	
 
 	
