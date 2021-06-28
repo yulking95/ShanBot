@@ -175,7 +175,7 @@ const getLevelingId = (userId) => {
         }
 
 function addMetadata(packname, author) {	
-	if (!packname) packname = 'HH'; if (!author) author = 'HH';	
+	if (!packname) packname = ''; if (!author) author = '';	
 	author = author.replace(/[^a-zA-Z0-9]/g, '');	
 	let name = `${author}_${packname}`
 	if (fs.existsSync(`./${name}.exif`)) return `./${name}.exif`
@@ -446,7 +446,7 @@ if (!welkom.includes(anu.jid)) return
 
 		client.updatePresence(from, Presence.composing)
 
-		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+		if (budy.includes("#izinadmin")) return reply("#izinadmin diterima")
 
 		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
 
@@ -481,7 +481,7 @@ if (!welkom.includes(anu.jid)) return
  
        /******ENTRADA FIN DE FUNCIONES******/
 			function addMetadata(packname, author) {	
-				if (!packname) packname = 'HH'; if (!author) author = 'Hatori';	
+				if (!packname) packname = ''; if (!author) author = '';	
 				author = author.replace(/[^a-zA-Z0-9]/g, '');	
 				let name = `${author}_${packname}`
 				if (fs.existsSync(`./src/stickers/${name}.exif`)) return `./src/stickers/${name}.exif`
@@ -518,11 +518,13 @@ if (!welkom.includes(anu.jid)) return
 				fs.writeFile(`./src/stickers/${name}.exif`, buffer, (err) => {	
 					return `./src/stickers/${name}.exif`	
 				})	
-
+     
 			}
 			switch(command) {
 		case 'help':
 		case 'menu':
+                uptime = process.uptime ()
+                putagg = await getBuffer(`https://i.ibb.co/JmDv7Dr/Anime.jpg`)
 		client.sendMessage(from, help(prefix), text)
 		break
                 case 'otaku':
@@ -547,18 +549,24 @@ if (!welkom.includes(anu.jid)) return
 		case 'version':
 		client.sendMessage(from, version(prefix, sender), text, {quoted: mek})
 		break*/
-                case 'welmenu':
+		case 'welmenu':
 		client.sendMessage(from, welmenu(prefix, sender), text, {quoted: mek})
 		break
 		case 'botero':
 		client.sendMessage(from, shantera(prefix, sender), text, {quoted: mek})
 		break
-		
 
 	
-case 'plantilla':
+                case 'alist':
+
+                    putagg = await getBuffer(`https://i.ibb.co/qDV0GXp/hatori.jpg`)
+
+                    client.sendMessage(from, putagg, image, {quoted: mek, caption: animes(prefix, pushname)})
+
+                    break
+                  case 'plantilla':
 	
-case 'plant1':
+                 case 'plant1':
                if (!isOwner) return reply(mess.only.ownerB)
 
                client.sendMessage(from, plantilla1(prefix, sender), text, {quoted: mek})
@@ -1209,7 +1217,7 @@ case 'plant1':
                     ppUrl = await client.getProfilePicture(from) // leave empty to get your own
 
 			        buffer = await getBuffer(ppUrl)		           
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: `*NOMBRE* : ${groupName}\n*MIEMBROS* : ${groupMembers.length}\n*DESCRIPCIÓN* : ${groupDesc}`})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: `*NOMBRE* : ${groupName}\n*MIEMBROS* : ${groupMembers.length}\n*DESCRIPCIÓN* : ${groupMetadata}`})
 
                     break
 	
@@ -1310,7 +1318,7 @@ case 'plant1':
 					
                                        case 'dado':    
 
-					if (!isGroupAdmins) return reply('Usted no es un admin de grupo!' ,text, { quoted: mek })					
+					if (!isGroupAdmins) return reply('Usted no es un admin de grupo!')					
 					kapankah = body.slice(1)
 
 					const elu =['1','2','3','4','5','6']
@@ -1457,7 +1465,7 @@ case 'plant1':
 					})
 					break
                 default:
-		if (budy.includes(`todo bien`)) {
+		if (budy.includes(`totfdo bien`)) {
                   reply(`Si amigo todo, bien vite`)
                   }
 
@@ -1473,7 +1481,7 @@ case 'plant1':
                   reply(`De nada bb`)
                   }
 
-		if (budy.includes(`Bien gracias y tu?`)) {
+		if (budy.includes(`Bien grachgias y tu?`)) {
                   reply(`Todo bien, te quiero :3`)
                   }
 					
