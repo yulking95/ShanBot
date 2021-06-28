@@ -840,7 +840,7 @@ if (!welkom.includes(anu.jid)) return
 					if (anu.error) return reply(anu.error)
 					teks = `*DESCARGA EXITOSA ✅*`
 					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, text, quoted: mek}})
+					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, text, quoted: mek})
 					break
                                  case 'tts':
 				   client.updatePresence(from, Presence.recording) 
