@@ -816,7 +816,7 @@ if (!welkom.includes(anu.jid)) return
 
 					client.sendMessage(from, pok, image, { quoted: mek, caption: `*PINTEREST*\n\*Resultado de la búsqueda* : *${tels}*`})
 
-                                        await limitAdd(sender
+                                        await limitAdd(sender)
 						break 
 					
 	
