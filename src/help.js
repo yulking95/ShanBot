@@ -1,4 +1,4 @@
-const help = (prefix) => {
+const help = (prefix, pushname, time, sender) => {
 	return `
 
     ⌜ *⚡HH-BOT⚡* ⌟  
@@ -31,7 +31,7 @@ Descargar musica y videos de YT
 Comandos de bienvedia a grupos
 
 ◉ *PARA USAR EL BOT*
-Registrate con el comando ${prefix}daftar y tu nombre
+  Bot libre.
 
 ◉ *RESUELVE TUS DUDAS*
   ║
