@@ -529,7 +529,7 @@ if (!welkom.includes(anu.jid)) return
 		case 'menu':
                 uptime = process.uptime ()
                 putagg = await getBuffer(`https://i.ibb.co/JmDv7Dr/Anime.jpg`)
-		client.sendMessage(from, putagg, image, {quoted: mek, caption: help(prefix, sender, pushname, time
+		client.sendMessage(from, putagg, image, {quoted: mek, caption: help(prefix, sender, pushname, time)})
 		break
                 case 'otaku':
 		client.sendMessage(from, otak(prefix, sender), text, {quoted: mek})
@@ -562,7 +562,7 @@ if (!welkom.includes(anu.jid)) return
 
 	
                 case 'alist':
-
+                if (!isGroup) return reply(mess.only.group)
                     putagg = await getBuffer(`https://i.ibb.co/qDV0GXp/hatori.jpg`)
 
                     client.sendMessage(from, putagg, image, animes(prefix, sender), text,{quoted: mek})
