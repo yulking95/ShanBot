@@ -1,6 +1,6 @@
 
 
-const animes = (prefix) => {
+const animes = (prefix, pushname) => {
 
 	return `
 
