@@ -335,6 +335,9 @@ if (!welkom.includes(anu.jid)) return
 			const args = body.trim().split(/ +/).slice(1)
 			let authorname = client.contacts[from] != undefined ? client.contacts[from].vname || client.contacts[from].notify : undefined
 			const isCmd = body.startsWith(prefix)
+			const insom = from.endsWith('@g.us')
+			const nameReq = insom ? mek.participant : mek.key.remoteJid
+			pushname = client.contacts[nameReq] != undefined ? client.contacts[nameReq].vname || client.contacts[nameReq].notify : undefined
 
 			mess = {
 				wait: 'Espere.. estoy procesando🕜\n\n❗Por favor no hacer spam👏❗',
@@ -526,7 +529,7 @@ if (!welkom.includes(anu.jid)) return
 		case 'menu':
                 uptime = process.uptime ()
                 putagg = await getBuffer(`https://i.ibb.co/JmDv7Dr/Anime.jpg`)
-		client.sendMessage(from, help(prefix, pushname, sender), text, {quoted: mek})
+		client.sendMessage(from, putagg, image, {quoted: mek, caption: help(prefix, sender, pushname, time
 		break
                 case 'otaku':
 		client.sendMessage(from, otak(prefix, sender), text, {quoted: mek})
