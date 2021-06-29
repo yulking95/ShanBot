@@ -565,7 +565,7 @@ if (!welkom.includes(anu.jid)) return
                 if (!isGroup) return reply(mess.only.group)
                     putagg = await getBuffer(`https://i.ibb.co/qDV0GXp/hatori.jpg`)
 
-                    client.sendMessage(from, putagg, image, animes(prefix, sender), text,{quoted: mek})
+                    client.sendMessage(from, putagg, image, animes(prefix, sender, pushname), text,{quoted: mek})
 
                     break
                   case 'plantilla':
